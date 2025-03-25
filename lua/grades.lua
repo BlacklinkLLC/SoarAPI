@@ -103,7 +103,7 @@ function render_grades(grades)
     local updated_html = string.gsub(html, '<ul id="grades-list"></ul>', '<ul id="grades-list">' .. grade_list_html .. '</ul>')
 
     -- Save the updated HTML with grade list
-    local file = io.open("grades.html", "w")
+    local file = io.open("../grades.html", "w")
     file:write(updated_html)
     file:close()
 
