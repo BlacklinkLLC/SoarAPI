@@ -1,0 +1,76 @@
+/* Blacklink Navbar CSS */
+
+:root {
+    --background-color: #0e0e10;
+    --text-color: #ffffff;
+    --secondary-text: #a1a1aa;
+    --button-bg: #18181b;
+    --button-border: #26262b;
+    --highlight-color: #a855f7;
+    --pro-border: #b185f7;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--background-color);
+    padding: 10px 20px;
+    border-radius: 10px;
+  }
+  
+  .navbar .logo {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .navbar .logo img {
+    width: 20px;
+    margin-right: 10px;
+  }
+  
+  .navbar .button {
+    background: var(--button-bg);
+    border: 1px solid var(--button-border);
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--secondary-text);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .navbar .button:hover {
+    background: #222228;
+  }
+  
+  .navbar .pro {
+    padding: 3px 8px;
+    border-radius: 10px;
+    border: 1px solid var(--pro-border);
+    color: var(--highlight-color);
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+  
+  .navbar .profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .navbar .profile img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid var(--button-border);
+  }
+  

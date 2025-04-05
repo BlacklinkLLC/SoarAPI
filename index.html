@@ -1,68 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blacklink .edu</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: #e0e0e0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            flex-direction: column;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blacklink Navbar</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ©2025 Blacklink Education, LLC.
+    .UI 2.3.4b(Build 6) */
 
-        .container {
-            text-align: center;
-            max-width: 600px;
-            width: 100%;
-        }
+    :root {
+      --background-color: #0e0e10;
+      --text-color: #ffffff;
+      --secondary-text: #a1a1aa;
+      --button-bg: #18181b;
+      --button-border: #26262b;
+      --highlight-color: #a855f7;
+      --pro-border: #b185f7;
+      --pro-gradient: linear-gradient(45deg, #2D446D, #763074);
+    }
 
-        h1 {
-            color: #4FC3F7;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      margin: 0;
+      padding-top: 80px; /* space for fixed navbar */
+      position: relative; /* Make sure info boxes are positioned relative to the body */
+    }
 
-        #data {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #1e1e1e;
-            border-radius: 6px;
-            display: inline-block;
-            color: #fff;
-        }
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--background-color);
+      padding: 10px 40px;
+      border-bottom: 1px solid var(--button-border);
+      height: 60px;
+    }
 
-        .course-list {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #1e1e1e;
-            border-radius: 6px;
-            display: block;
-            color: #fff;
-            text-align: left;
-        }
+    .navbar .logo {
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      font-weight: bold;
+    }
 
-        .course-item {
-            margin-bottom: 10px;
-            padding: 5px;
-            border: 1px solid #4FC3F7;
-            border-radius: 4px;
-        }
-    </style>
+    .navbar .logo img {
+      width: 20px;
+      margin-right: 10px;
+    }
+
+    .navbar .button {
+      background: var(--button-bg);
+      border: 1px solid var(--button-border);
+      padding: 10px 20px; /* Increase padding to make the button larger */
+      border-radius: 8px;
+      font-size: 16px; /* Increase font size for bigger text */
+      color: var(--secondary-text);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .navbar .button:hover {
+      background: #222228;
+    }
+
+    .navbar .pro {
+      padding: 6px 16px; /* Increase padding to make the pro box larger */
+      border-radius: 10px;
+      background: var(--pro-gradient);
+      color: var(--text-color);
+      font-size: 14px; /* Increase font size for bigger text */
+      text-transform: lowercase; /* Make the text lowercase */
+      font-weight: bold; /* Make the text bold */
+      border: 1px solid var(--pro-border);
+      display: flex; /* Use flexbox to center the text */
+      align-items: center; /* Vertically center the text */
+      justify-content: center; /* Horizontally center the text */
+      gap: 10px; /* Increase gap between text and image */
+    }
+
+    .navbar .profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .navbar .profile button {
+      background: var(--button-bg);
+      border: 1px solid var(--button-border);
+      padding: 8px 16px; /* Adjust padding to match button size */
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s;
+      color: var(--text-color); /* Set text color to white */
+    }
+
+    .navbar .profile button:hover {
+      background: #222228;
+    }
+
+    .navbar .profile img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid var(--button-border);
+    }
+
+    .background {
+      width: 80%;
+      max-width: 1000px;
+      background: #1a1a1d;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+      margin: 0 auto;
+    }
+
+    /* Info Box Styles */
+    .info-box {
+      display: none;
+      position: absolute;
+      top: 60px; /* Place below the navbar */
+      background-color: #1a1a1d;
+      color: var(--text-color);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+      width: 80%;
+      max-width: 1000px;
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+      transform: translateY(-20px); /* Start off-screen */
+      opacity: 0; /* Start hidden */
+    }
+
+    .info-box.show {
+      display: block;
+      opacity: 1; /* Fade in */
+      transform: translateY(0); /* Slide into place */
+    }
+
+    /* Positioning the boxes based on which button is clicked */
+    .info-box-stats {
+      left: 20px;
+    }
+
+    .info-box-pro {
+      right: 20px;
+    }
+
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to .edu!</h1>
-        <div id="data">Loading...</div>
-        
-        <div class="course-list" id="course-list">
-            <h3>Courses:</h3>
-            <ul id="courses"><li class="course-item"><strong>Math 101</strong>: Basic math</li><li class="course-item"><strong>BLACKLINK .EDU PRIVATE BETA TEST</strong>: TEST</li></ul>
-        </div>
+  <div class="navbar">
+    <div class="logo">
+      <img src="/assets/Vector 28.png" alt="Blacklink Logo">
+      BLACKLINK
     </div>
+    <button class="button" id="statsButton">Stats For Nerds</button>
+    <span class="pro" id="proButton"><i>pro</i> <img src="/assets/pro-bolt.svg" alt="Pro Bolt"></span>
+    <div class="profile">
+      <button>
+        <span>Oliver Hayes</span>
+        <img src="/assets/profile.png" alt="Profile Picture">
+      </button>
+    </div>
+  </div>
+
+  <!-- Hidden Info Box for Stats -->
+  <div class="info-box info-box-stats" id="infoBox">
+    <h2>Product Information</h2>
+    <p><strong>Version:</strong> 2.3.4B</p>
+    <p><strong>Build:</strong> 6</p>
+    <p><strong>&copy;2025 Blacklink Education, LLC.</p>
+  </div>
+
+  <!-- Hidden Info Box for Pro -->
+  <div class="info-box info-box-pro" id="proInfoBox">
+    <h2>Pro Information</h2>
+    <p><strong>Pro Features:</strong> Access to exclusive tools and early updates.</p>
+    <p><strong>Support:</strong> 24/7 priority support for Pro members.</p>
+    <p><strong>&copy;2025 Blacklink Education, LLC.</p>
+  </div>
+
+  <div class="background">
+    <p>.ui Testing.
+        <br>&copy;2025 Blacklink Education, LLC.
+        <br> .ui Build 6 Version 2.3.4B
+  </div>
+
+  <script>
+    // JavaScript to toggle the info boxes
+    const statsButton = document.getElementById('statsButton');
+    const infoBox = document.getElementById('infoBox');
+
+    const proButton = document.getElementById('proButton');
+    const proInfoBox = document.getElementById('proInfoBox');
+
+    // Toggle Stats Info Box
+    statsButton.addEventListener('click', () => {
+      infoBox.classList.toggle('show');
+      proInfoBox.classList.remove('show'); // Close Pro info box if it's open
+    });
+
+    // Toggle Pro Info Box
+    proButton.addEventListener('click', () => {
+      proInfoBox.classList.toggle('show');
+      infoBox.classList.remove('show'); // Close Stats info box if it's open
+    });
+  </script>
 </body>
 </html>
